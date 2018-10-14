@@ -1,4 +1,4 @@
-# vue-wechat-auth
+# wechat-login
 > 基于vue开发的微信单页应用授权插件
 
 ## 依赖
@@ -78,3 +78,7 @@ new Vue({
   render: h => h(App)
 })
 ```
+
+
+# 关于本插件
+本插件大量参考vue-wechat-auth 和 vue-wechat-login
