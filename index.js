@@ -1,4 +1,3 @@
-
-import wechatLogin from './src/index';
+let wechatLogin = require('./src/index')
 
 module.exports = wechatLogin
