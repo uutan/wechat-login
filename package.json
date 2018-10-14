@@ -1,12 +1,29 @@
 {
-  "name": "wechat-login",
+  "name": "@uutan/wechat-login",
   "version": "0.1.0",
-  "private": true,
+  "description": "基于vue开发的微信单页应用授权插件",
+  "author": "UUTAN <uutan@qq.com>",
+  "main": "./index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uutan/wechat-plugin.git"
+  },
+  "keywords": [
+    "wechat-plugin",
+    "vue-wechat",
+    "vue公众号",
+    "vue微信登陆"
+  ],
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/uutan/wechat-plugin/issues"
+  },
+  "homepage": "https://github.com/uutan/wechat-plugin",
   "dependencies": {
     "vue": "^2.5.17"
   },
