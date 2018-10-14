@@ -8,7 +8,7 @@
 
 ### 1.npm安装
 ``` bash
-npm i wechat-login vue-router axios -S
+npm i @uutan/wechat-login vue-router axios -S
 # axios为选装，可以使用您喜欢的任意ajax库
 ```
 
