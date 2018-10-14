@@ -1,6 +1,10 @@
 export default class wechatLogin 
 {
-
+	/**
+	 * 合并参数值
+	 * 
+	 * @param {*} config 
+	 */
 	constructor(config) {
 		const defaultConfig = {
 			appid: '',
@@ -15,27 +19,28 @@ export default class wechatLogin
 	}
 
 	// 获取当前需要记住的网址
-	getRedirect(){
-		let redirectUri = window.location.href
-		// router为hash模式时，需要去掉#以后的参数
-		if( redirectUri.indexOf('#') != -1 )
+	getRedirect (fullPath) {
+		// router为 hash 模式时，需要去掉#以后的参数
+		if( this.config.router.mode == 'hash' )
 		{
+			let redirectUri = window.location.href
 			let redirectUriArr = redirectUri.split('#')
-			redirectUri = encodeURIComponent(redirectUriArr[0])
+			return encodeURIComponent(redirectUriArr[0])
 		}else{ 
-			// router为html5模式时，就直接用全地址
-			redirectUri = encodeURIComponent(redirectUri)
+			// router为 history 模式时，就需要组装授权请求地址
+			let host = window.location.protocol+'//'+window.location.host;
+			console.log('获取需要跳转的网址为：',host+fullPath);
+			return encodeURIComponent(host+fullPath)
 		}
-		return redirectUri;
 	}
 
 	/**
 	 * 获取code认证值
 	 */
-	getCode () {
+	getCode (fullPath) {
 		let authPageBaseUri = 'https://open.weixin.qq.com/connect/oauth2/authorize';
 
-		let redirect_uri = this.getRedirect();
+		let redirect_uri = this.getRedirect(fullPath);
 		if( this.config.isSaveUrl ) {
 			window.sessionStorage.setItem(this.config.urlSessionStorageName, redirect_uri);
 		} else {
