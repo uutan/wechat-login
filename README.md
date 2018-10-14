@@ -18,7 +18,7 @@ npm i @uutan/wechat-login vue-router axios -S
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import WechatLogin from 'wechat-login'
+import wechatLogin from '@uutan/wechat-login';
 import axios from 'axios'
 
 // 路由配置
@@ -44,8 +44,9 @@ Vue.use(WechatLogin , {
   scope: 'snsapi_userinfo', // 应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
   isSaveUrl: true, // 是否保存当前需要授权跳转的地址
   urlSessionStorageName: 'redirct_url', // 保存到sesionStorage的键值名
-  redirect_uri: '', // 与isSaveUrl 二选一，isSaveUrl为true时，该值无效
+  redirect_uri: '', // 与isSaveUrl 二选一，isSaveUrl为true时，该值无效 (回调的网址是前端网址，用来使用code交换access_token请求用的)
   getCodeCallback (code, next) {
+
     // 用户同意授权后回调方法
     // code：用户同意授权后，获得code值
     // code说明： code作为换取access_token的票据，每次用户授权带上的code将不一样，code只能使用一次，5分钟未被使用自动过期。
