@@ -28,7 +28,8 @@ export default class wechatLogin
 			return encodeURIComponent(redirectUriArr[0])
 		}else{ 
 			// router为 history 模式时，就需要组装授权请求地址
-			let host = window.location.protocol+'//'+window.location.host;
+			//let host = window.location.protocol+'//'+window.location.host;
+			let host = window.location.href;
 			console.log('获取需要跳转的网址为：',host+fullPath);
 			return encodeURIComponent(host+fullPath)
 		}

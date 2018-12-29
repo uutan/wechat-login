@@ -54,22 +54,28 @@ Vue.use(WechatLogin , {
     // next说明：next方法接收两个参数
     // 参数1为通过code值请求后端获取到的access_token值，如果获取失败请填入空字符串''
     // 参数2(非必填，默认获取access_token切换到当前路由对象)，指定切换对象 next('/') 或者 next({ path: '/' })
-    axios.get('通过code值换取access_token接口地址', {
-      params: {
-        code,
-        state: ''
-      }
+    axios.get('api地址，使用code换取access_token和相关数据', {
+      params: {code, state: ''},
     }).then(response => {
-      let data = response.data
-      let accessToken = data.data['access_token']
-      if (accessToken) {
-        next(accessToken) // 获取access_toeken成功
+      let data = response.data;
+
+      // 保存用户信息，建议保存如下数据：
+      // openid   来自微信的openid
+      // access_token 来自api的权限认证token
+      // access_token 来自微信的access_token
+      window.sessionStorage.setItem('user', JSON.stringify(data.user));
+      
+      if (data.code) {
+        next('', code);
       } else {
-        next() // 获取access_token失败
+        Toast.fail('授权失败!');
+        next('/tip'); // ！！！注意： 获取access_token失败。如果该页也需要授权时，将进入重复授权跳转
       }
-    }).catch(() => {
-      next() // ajax出现错误
-    })
+    }).catch((e) => {
+      Toast.fail('授权失败!');
+      next('/tip'); // ajax出现错误
+    });
+
   }
 })
 
