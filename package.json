@@ -1,6 +1,6 @@
 {
   "name": "@uutan/wechat-login",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "基于vue开发的微信单页应用授权插件",
   "author": "UUTAN <uutan@qq.com>",
   "main": "./index.js",

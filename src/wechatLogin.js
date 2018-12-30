@@ -31,7 +31,7 @@ export default class wechatLogin
 			//let host = window.location.protocol+'//'+window.location.host;
 			let host = window.location.href;
 			console.log('获取需要跳转的网址为：',host+fullPath);
-			return encodeURIComponent(host+fullPath)
+			return encodeURIComponent(host)
 		}
 	}
 
