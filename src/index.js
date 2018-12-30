@@ -21,8 +21,9 @@ export default {
                     wcl.getCodeCallback(next, to.query.code);
                 }
                 else
-                { //去获取code
-                    wcl.getCode(to.path);
+                { 
+                    //去获取code
+                    wcl.getCode(to.fullPath);
                 }
             }else{
                 next();
